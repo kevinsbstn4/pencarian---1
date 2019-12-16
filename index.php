@@ -15,51 +15,60 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="index.css" />
 </head>
-<body>
+<body > 
 <div class="s01">
       <form action="" method="post"> 
         <div class="inner-form">
           <div class="input-field first-wrap">
-            <input id="search" type="text" placeholder="What are you looking for?" />
+            <input id="search" name="query" type="text" placeholder="What are you looking for?" />
           </div>
           <div class="input-field third-wrap">
-            <button class="btn-search" type="button">Search</button>
+            <button class="btn-search" name="btn-1" type="submit">Search</button>
           </div>
         </div>
       </form>
     </div>
-    <table class="table">
-  <thead class="thead-dark">
+ 
+<table class="table">
+  <thead class="thead-primary" style="background-color: purple; color: white;">
     <tr>
-      <th scope="col">No</th>
       <th scope="col">Nama</th>
+      <th scope="col">Jenis</th>
       <th scope="col">Alamat</th>
       <th scope="col">Contact</th>
+      
     </tr>
-    
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+  
+  <?php
+  if(isset($_POST['btn-1'])){
+    $query = $_POST['query'];
+    $sql = "SELECT * FROM customer WHERE nm_customer LIKE '%$query%' OR jenis LIKE '%$query%' OR alamat LIKE '%$query%' OR telp LIKE '%$query%'";
+    $result = mysqli_query($koneksi,$sql);
+    $resultCheck = mysqli_num_rows($result);
+ 
+    if($resultCheck > 0){
+      while ($row = mysqli_fetch_assoc($result)){
+        $nama_customer = $row['nm_customer'];
+        $jenis = $row['jenis'];
+        $alamat = $row['alamat'];
+        $telp = $row['telp'];
+        echo "<tr>";
+        echo "<td>$nama_customer</td>";
+        echo "<td>$jenis</td>";
+        echo "<td>$alamat</td>";
+        echo "<td>$telp</td>";
+        echo "</tr>";
+      }
+    }
+  }
+   
+   ?>
+  </tr>
+   
   </tbody>
 </table>
-
 
 </body>
 </html>
