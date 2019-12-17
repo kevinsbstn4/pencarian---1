@@ -28,7 +28,9 @@
         </div>
       </form>
     </div>
- 
+    <center> 
+    <button style="margin : 0px 0px 15px 0px; width: 50%; height: 60px; color:white;" type="submit" class="btn btn-warning">Tambahkan Data</button>
+    </center>
 <table class="table">
   <thead class="thead-primary" style="background-color: purple; color: white;">
     <tr>
@@ -36,6 +38,8 @@
       <th scope="col">Jenis</th>
       <th scope="col">Alamat</th>
       <th scope="col">Contact</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
       
     </tr>
   </thead>
@@ -54,16 +58,19 @@
         $jenis = $row['jenis'];
         $alamat = $row['alamat'];
         $telp = $row['telp'];
+        $id = $row['id_customer'];
         echo "<tr>";
         echo "<td>$nama_customer</td>";
         echo "<td>$jenis</td>";
         echo "<td>$alamat</td>";
         echo "<td>$telp</td>";
+        echo "<td><a href='hapusdata.php?id_customer=$row[id_customer]'>Delete</a></td>";
+        echo "<td><a href='editdata.php?id_customer=$row[id_customer]'>Edit</a></td>";
+       
         echo "</tr>";
       }
     }
   }
-   
    ?>
   </tr>
    
