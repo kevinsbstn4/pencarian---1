@@ -29,7 +29,7 @@
       </form>
     </div>
     <center> 
-    <button style="margin : 0px 0px 15px 0px; width: 50%; height: 60px; color:white;" type="submit" class="btn btn-warning">Tambahkan Data</button>
+    <a href="adddata.php" style="margin : 0px 0px 15px 0px; width: 50%; height: 60px; color:white;" type="submit" class="btn btn-warning">Tambahkan Data</a>
     </center>
 <table class="table">
   <thead class="thead-primary" style="background-color: purple; color: white;">
